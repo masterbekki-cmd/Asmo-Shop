@@ -3,7 +3,10 @@ import { Product, ProductInput } from '../types/product'
 
 export async function getProducts(): Promise<Product[]> {
 	const res = await fetch(`${API_URL}/products`)
-	if (!res.ok) throw new Error('Mahsulotlarni olib bo‘lmadi')
+	if (!res.ok)
+		throw new Error(
+			`Mahsulotlarni olib bo'lmadi (status: ${res.status}) URL: ${API_URL}/products`,
+		)
 	return res.json()
 }
 
