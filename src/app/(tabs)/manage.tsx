@@ -51,14 +51,39 @@ export default function ManageScreen() {
 			},
 		])
 	}
+	const middlePrice =
+		products.reduce((sum, item) => sum + item.narxi, 0) / products.length
 
 	if (loading) {
 		return <ActivityIndicator className='flex-1' size='large' />
 	}
 
 	return (
-		<View className='flex-1 pt-16 px-4 bg-white'>
-			<Text className='text-3xl font-bold mb-4'>Boshqarish</Text>
+		<View className='flex-1 pt-20 px-4 bg-gray-100'>
+			<View className='mb-4'>
+				<Text className='text-3xl font-bold'>Boshqaruv Paneli</Text>
+				<Text className='text-sm text-gray-400'>
+					Mahsulotlarni tahrirlash va o'chirish
+				</Text>
+			</View>
+			<View className='flex-row items-center justify-between mb-6'>
+				<View className='w-[48%] border rounded-2xl border-gray-200 pl-3 py-2 bg-white flex-row items-center gap-4'>
+					<View className='w-10 h-10 bg-blue-100 rounded-xl'></View>
+					<View className='flex-1'>
+						<Text className='text-sm text-gray-400'>JAMI MAHSULOT</Text>
+						<Text className='text-lg font-bold'>{products.length}</Text>
+					</View>
+				</View>
+				<View className='w-[48%] border rounded-2xl border-gray-200 pl-3 py-2 bg-white flex-row items-center gap-4'>
+					<View className='w-10 h-10 bg-green-100 rounded-xl'></View>
+					<View className='flex-1'>
+						<Text className='text-sm text-gray-400'>O'RTACHA NARX</Text>
+						<Text className='text-lg font-bold'>
+							{middlePrice.toLocaleString('de-DE')}
+						</Text>
+					</View>
+				</View>
+			</View>
 			<FlatList
 				data={products}
 				keyExtractor={item => String(item.id)}
