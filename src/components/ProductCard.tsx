@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
+import { Image } from 'expo-image'
 import { useState } from 'react'
-import { Image, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { Product } from '../types/product'
 
 type IconName = keyof typeof Ionicons.glyphMap
@@ -33,12 +34,16 @@ export default function ProductCard({ item }: { item: Product }) {
 			{showImage ? (
 				<Image
 					source={{ uri: item.rasm as string }}
-					style={{ width: '100%', height: 180 }}
-					resizeMode='cover'
+					style={{ width: '100%', aspectRatio: 4 / 3 }}
+					contentFit='cover'
+					transition={200}
 					onError={() => setImgError(true)}
 				/>
 			) : (
-				<View className='h-40 bg-blue-100 items-center justify-center'>
+				<View
+					className='bg-blue-100 items-center justify-center'
+					style={{ width: '100%', aspectRatio: 4 / 3 }}
+				>
 					<Text className='text-5xl font-bold text-blue-600'>
 						{item.nomi.charAt(0).toUpperCase()}
 					</Text>

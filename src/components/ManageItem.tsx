@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
+import { Image } from 'expo-image'
 import { useState } from 'react'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { Product } from '../types/product'
 type Props = {
 	item: Product
@@ -33,6 +34,7 @@ export default function ManageItem({ item, onDelete, onEdit }: Props) {
 								borderRadius: 12,
 								marginRight: 12,
 							}}
+							contentFit='cover'
 							onError={() => setImgError(true)}
 						/>
 					) : (
