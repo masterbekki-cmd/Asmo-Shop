@@ -7,19 +7,21 @@ import { updateProduct } from '../../services/productService';
 export default function EditScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{
-    id: string;
-    nomi: string;
-    materiali: string;
-    rangi: string;
-    razmeri: string;
-    narxi: string;
-  }>();
+	id: string
+	nomi: string
+	materiali: string
+	rangi: string
+	razmeri: string
+	narxi: string
+	rasm: string
+}>()
 
   const [nomi, setNomi] = useState(params.nomi ?? '');
   const [materiali, setMateriali] = useState(params.materiali ?? '');
   const [rangi, setRangi] = useState(params.rangi ?? '');
   const [razmeri, setRazmeri] = useState(params.razmeri ?? '');
   const [narxi, setNarxi] = useState(params.narxi ?? '');
+  const [rasm, setRasm] = useState(params.rasm ?? '')
   const [saving, setSaving] = useState(false);
 
   const handleSave = async () => {
@@ -36,6 +38,7 @@ export default function EditScreen() {
         rangi: rangi.trim(),
         razmeri: razmeri.trim(),
         narxi: Number(narxi),
+        rasm: rasm.trim() || null,
       });
       router.back();
     } catch (err) {

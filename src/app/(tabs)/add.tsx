@@ -11,6 +11,7 @@ export default function AddScreen() {
 	const [rangi, setRangi] = useState('')
 	const [razmeri, setRazmeri] = useState('')
 	const [narxi, setNarxi] = useState('')
+	const [rasm, setRasm] = useState('')
 	const [saving, setSaving] = useState(false)
 
 	const handleSubmit = async () => {
@@ -27,6 +28,7 @@ export default function AddScreen() {
 				rangi: rangi.trim(),
 				razmeri: razmeri.trim(),
 				narxi: Number(narxi),
+				rasm: rasm.trim() || null,
 			})
 
 			setNomi('')
@@ -34,6 +36,7 @@ export default function AddScreen() {
 			setRangi('')
 			setRazmeri('')
 			setNarxi('')
+			setRasm('')
 
 			router.navigate('/')
 		} catch (err) {
@@ -81,7 +84,14 @@ export default function AddScreen() {
 				placeholder='350000'
 				keyboardType='numeric'
 			/>
-
+			<FormInput
+				label='Rasm havolasi (ixtiyoriy)'
+				value={rasm}
+				onChangeText={setRasm}
+				placeholder='https://...'
+				autoCapitalize='none'
+				keyboardType='url'
+			/>
 			<TouchableOpacity
 				onPress={handleSubmit}
 				disabled={saving}

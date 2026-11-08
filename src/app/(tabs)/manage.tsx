@@ -20,6 +20,7 @@ export default function ManageScreen() {
 				rangi: item.rangi,
 				razmeri: item.razmeri,
 				narxi: String(item.narxi),
+				rasm: item.rasm ?? '',
 			},
 		})
 	}

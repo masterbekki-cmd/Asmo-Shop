@@ -5,6 +5,7 @@ export type Product = {
 	rangi: string
 	razmeri: string
 	narxi: number
+	rasm: string | null
 }
 
 export type ProductInput = Omit<Product, 'id'>
